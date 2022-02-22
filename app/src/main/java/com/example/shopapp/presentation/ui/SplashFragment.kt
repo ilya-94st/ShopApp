@@ -1,6 +1,5 @@
 package com.example.shopapp.presentation.ui
 
-import android.os.Build
 import android.os.Bundle
 import android.view.*
 import androidx.navigation.fragment.findNavController
@@ -34,7 +33,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         GlobalScope.launch {
             delay(2000)
             activity?.runOnUiThread {
-                findNavController().navigate(R.id.action_splashFragment_to_registrationFragment)
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
             }
         }
     }
