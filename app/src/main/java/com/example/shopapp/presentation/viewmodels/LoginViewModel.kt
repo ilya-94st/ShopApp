@@ -1,14 +1,16 @@
 package com.example.shopapp.presentation.viewmodels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shopapp.domain.use_cases.CheckLogin
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 class LoginViewModel(private val checkLogin: CheckLogin): ViewModel() {
-    private val _loginEvent = MutableStateFlow<LoginInEvent>(LoginInEvent.Empty)
+    private val _loginEvent = MutableLiveData<LoginInEvent>(LoginInEvent.Empty)
 
-    val loginEvent: StateFlow<LoginInEvent> = _loginEvent
+    val loginEvent: LiveData<LoginInEvent> = _loginEvent
 
 
     fun validLoginDetails(etEmail: String, etPassword: String): Boolean {

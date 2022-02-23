@@ -8,7 +8,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.example.shopapp.R
+import com.example.shopapp.data.firestore.FireStore
 import com.example.shopapp.databinding.FragmentRegistrationBinding
+import com.example.shopapp.domain.models.Users
 import com.example.shopapp.domain.use_cases.CheckRegistration
 import com.example.shopapp.presentation.base.BaseFragment
 import com.example.shopapp.presentation.viewmodels.RegistrationFactoryViewModel
@@ -94,25 +96,40 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
             withContext(Dispatchers.Main){
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
-                        hideProgressDialog()
+                      //  hideProgressDialog()
 
                         if (task.isSuccessful) {
 
                             val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                            errorSnackBar(
-                                "You are registered successfully. Your user is id ${firebaseUser.uid}",
-                                false
+                            val user = Users(
+                                firebaseUser.uid,
+                                binding.etFirstName.text.toString(),
+                                binding.etLastName.text.toString(),
+                                binding.etEmailID.text.toString(),
+
                             )
 
-                            FirebaseAuth.getInstance().signOut()
-                            findNavController().popBackStack()
+                             FireStore().registerUser(this@RegistrationFragment, user)
+
+                        //    FirebaseAuth.getInstance().signOut()
+                       //     findNavController().popBackStack()
 
                         } else {
+                            hideProgressDialog()
                             errorSnackBar(task.exception!!.message.toString(), true)
                         }
                     }.await()
             }
         }
     }
+
+     fun userRegistrationSuccessful() {
+        hideProgressDialog()
+
+        toast("You are registered successfully")
+    }
+
+
+
 }
