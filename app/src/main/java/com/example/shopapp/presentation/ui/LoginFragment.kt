@@ -78,7 +78,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
         if(user.profileCommitted == 0) {
             // if user profile is incomplete then launch the UserProfileFragment
-            findNavController().navigate(R.id.action_loginFragment_to_userProfileFragment)
+                val bundle = Bundle().apply {
+                    putSerializable("users", user)
+                }
+            findNavController().navigate(R.id.action_loginFragment_to_userProfileFragment, bundle)
         } else {
             // Redirect the user to Main screen after log in
             findNavController().navigate(R.id.action_loginFragment_to_mainFragment)

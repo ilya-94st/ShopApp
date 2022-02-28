@@ -22,3 +22,4 @@ fun showErrorSnackBar(view: View, text: String, errorMessages: Boolean, context:
     }
     snackBar.show()
 }
+

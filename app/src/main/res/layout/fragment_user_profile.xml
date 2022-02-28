@@ -51,10 +51,11 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/ivUserPhoto"
+                android:layout_width="144dp"
+                android:layout_height="144dp"
                 android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -71,7 +72,7 @@
                 android:hint="First name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2">
+                app:layout_constraintTop_toBottomOf="@+id/ivUserPhoto">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etFirstName"
@@ -133,7 +134,6 @@
                 android:layout_marginEnd="16dp"
                 android:hint="Mobile Number"
                 android:inputType="textPassword"
-                app:endIconMode="password_toggle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/containerEmailId">

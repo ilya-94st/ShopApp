@@ -59,5 +59,9 @@
         android:id="@+id/userProfileFragment"
         android:name="com.example.shopapp.presentation.ui.UserProfileFragment"
         android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_user_profile" />
+        tools:layout="@layout/fragment_user_profile" >
+        <argument
+            android:name="users"
+            app:argType="com.example.shopapp.domain.models.Users" />
+    </fragment>
 </navigation>

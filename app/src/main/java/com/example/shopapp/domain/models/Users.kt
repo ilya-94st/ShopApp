@@ -1,5 +1,7 @@
 package com.example.shopapp.domain.models
 
+import java.io.Serializable
+
 data class Users(
     val id: String = "",
     val firstName: String = "",
@@ -9,4 +11,4 @@ data class Users(
     val mobile: Long = 0,
     val gender: String = "",
     val profileCommitted: Int = 0
-)
+): Serializable
